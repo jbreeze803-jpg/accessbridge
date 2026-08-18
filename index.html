@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 <title>Visionary Software</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Investment proposal for Visionary Software LLC — accessible-first professional software, launching with AccessBridge.">
@@ -8,7 +15,7 @@
   :root{
     --ink:#070A14; --ink-2:#0B0F1E; --surface:#0F1526; --surface-2:#151D33;
     --glass:rgba(20,28,48,.55); --line:#1E2A44; --line-2:#2C3D5C;
-    --text:#EEF2FF; --muted:#96A6CC; --muted-2:#6A7A9E;
+    --text:#EEF2FF; --muted:#96A6CC; --muted-2:#8093B8;
     --cyan:#3FE6F5; --blue:#6AA8FF; --violet:#B067F9; --gold:#FFB020; --gold-2:#FFD36A;
     --grad:linear-gradient(100deg,#3FE6F5 0%,#6AA8FF 50%,#B067F9 100%);
     --grad-soft:linear-gradient(120deg,rgba(63,230,245,.16),rgba(176,103,249,.16));
@@ -37,7 +44,7 @@
   .aurora .a3{width:40vw; height:40vw; left:26vw; bottom:-16vw; background:radial-gradient(circle,rgba(106,168,255,.4),transparent 62%); animation:drift1 38s ease-in-out infinite reverse}
   @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(4vw,5vh)}}
   @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-5vw,4vh)}}
-  body>main, body>header, body>footer{position:relative; z-index:2}
+  body>main, body>footer{position:relative; z-index:2}
 
   /* scroll progress */
   #progress{position:fixed; top:0; left:0; height:3px; width:0; background:var(--grad); z-index:60; box-shadow:0 0 12px var(--glow-cyan)}
@@ -139,11 +146,15 @@
   .vhero video{display:block; width:100%; height:auto}
   .vcap{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:baseline; margin-top:16px}
   .vcap b{font-weight:600; font-size:16px} .vcap span{color:var(--muted-2); font-family:var(--f-mono); font-size:12.5px}
-  .vgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:18px; margin-top:28px}
+  .vgrid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:28px}
+  @media (max-width:640px){.vgrid{grid-template-columns:1fr}}
   .vcard{background:var(--glass); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:border-color .2s, transform .2s}
   .vcard:hover{border-color:var(--line-2); transform:translateY(-3px)}
   .vcard video{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; background:#05080f}
-  .vcard.vert video{aspect-ratio:auto; max-height:360px; object-fit:contain; background:#05080f}
+  .vrow-v{display:flex; flex-wrap:wrap; gap:18px; margin-top:18px}
+  .vrow-v .vcard{width:216px; flex:none}
+  @media (max-width:480px){.vrow-v{justify-content:center}.vrow-v .vcard{width:46%; max-width:220px}}
+  .vrow-v video{display:block; width:100%; height:auto; aspect-ratio:9/16; object-fit:cover; background:#05080f}
   .vcard .m{padding:14px 16px} .vcard .m b{font-size:15px; font-weight:600} .vcard .m span{display:block; color:var(--muted); font-size:13px; margin-top:3px}
 
   /* market */
@@ -170,6 +181,20 @@
   .raisehead{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 22px; margin-bottom:28px; padding-bottom:24px; border-bottom:1px solid var(--line)}
   .raisehead .big{font-family:var(--f-mono); font-weight:600; font-size:clamp(46px,8vw,72px); background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.03em; line-height:1}
   .raisehead .lab{color:var(--muted); font-size:15px}
+  /* race to $50,000 */
+  .racemeter{margin-bottom:30px; padding-bottom:26px; border-bottom:1px solid var(--line)}
+  .race-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px 22px; flex-wrap:wrap; margin-bottom:14px}
+  .race-goal{font-family:var(--f-mono); font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .race-goal b{color:var(--gold-2)}
+  .race-count{font-family:var(--f-mono); font-weight:600; font-size:clamp(34px,6.5vw,56px); background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.02em; line-height:1}
+  .race-track{display:flex; height:26px; border-radius:999px; overflow:hidden; background:var(--ink-2); border:1px solid var(--line); box-shadow:inset 0 1px 5px rgba(0,0,0,.55)}
+  .race-track .seg{width:0; transition:width 1.15s cubic-bezier(.2,.7,.2,1)}
+  .racemeter.in .seg{width:var(--w)}
+  @media (prefers-reduced-motion:reduce){.race-track .seg{transition:none; width:var(--w)}}
+  .race-legend{display:flex; flex-wrap:wrap; gap:9px 20px; margin-top:16px}
+  .race-legend .li{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .race-legend .li i{width:11px; height:11px; border-radius:3px; flex:none}
+  .race-legend .li b{color:var(--text); font-weight:600; font-family:var(--f-mono); font-size:12.5px; margin-left:1px}
   .uof{display:flex; flex-direction:column; gap:16px}
   .uof .row{display:grid; grid-template-columns:minmax(200px,1.4fr) 2.3fr auto; gap:18px; align-items:center}
   .uof .name{font-weight:600; font-size:15.5px}
@@ -284,7 +309,7 @@
 
     <div class="statgrid reveal" style="margin-bottom:34px">
       <div class="stat"><div class="big" data-count="124" data-pre2="2 / ">2 / 124</div><div class="lab">Interface elements a screen reader can read — now all of it, spoken by ear.</div></div>
-      <div class="stat"><div class="big">1 in 10,000</div><div class="lab">A Serato planner, on priority: "if only 1 in 10,000 DJs need this, it makes a lot harder to prioritise."</div></div>
+      <div class="stat"><div class="big">1 in 10,000</div><div class="lab">A Serato planner, on priority: "if only 1 in 10,000 DJs need this, it makes it a lot harder to prioritise."</div></div>
       <div class="stat"><div class="big" data-count="30000" data-suffix="+">30,000+</div><div class="lab">Lines of Swift / C++ shipped, guarded by a 470+ test suite.</div></div>
     </div>
 
@@ -333,17 +358,19 @@
       <p class="lede">The explainer, the trailer, the investor tech brief, and the vertical cuts.</p>
     </div>
     <div class="vhero reveal">
-      <video controls preload="metadata" playsinline poster="images/01-hero-square.png">
+      <video controls preload="metadata" playsinline poster="images/poster-explainer.jpg">
         <source src="videos/how-accessbridge-works-animated.mp4" type="video/mp4">
         Your browser can't play this video. <a href="videos/how-accessbridge-works-animated.mp4">Download it here.</a>
       </video>
     </div>
-    <div class="vcap"><b>How AccessBridge works — and the raise</b><span>Animated explainer</span></div>
+    <div class="vcap"><b>How AccessBridge works — and the raise</b><span>Animated explainer · 0:55</span></div>
     <div class="vgrid">
-      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/07-console.png"><source src="videos/trailer-the-same-software.mp4" type="video/mp4"></video><div class="m"><b>The same software</b><span>Flagship trailer · 1:12</span></div></div>
-      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/08-console-library.png"><source src="videos/investor-tech-brief.mp4" type="video/mp4"></video><div class="m"><b>Investor tech brief</b><span>The full case · ~3:17</span></div></div>
-      <div class="vcard vert reveal"><video controls preload="none" playsinline><source src="videos/short-1-until-now.mp4" type="video/mp4"></video><div class="m"><b>Until now</b><span>Vertical short</span></div></div>
-      <div class="vcard vert reveal"><video controls preload="none" playsinline><source src="videos/short-2-changing-the-game.mp4" type="video/mp4"></video><div class="m"><b>Changing the game</b><span>Vertical short</span></div></div>
+      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/poster-trailer.jpg"><source src="videos/trailer-the-same-software.mp4" type="video/mp4"></video><div class="m"><b>The same software</b><span>Flagship trailer · 1:18</span></div></div>
+      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/poster-investor.jpg"><source src="videos/investor-tech-brief.mp4" type="video/mp4"></video><div class="m"><b>Investor tech brief</b><span>The full case · 3:17</span></div></div>
+    </div>
+    <div class="vrow-v">
+      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/poster-short1.jpg"><source src="videos/short-1-until-now.mp4" type="video/mp4"></video><div class="m"><b>Until now</b><span>Vertical short · 0:21</span></div></div>
+      <div class="vcard reveal"><video controls preload="none" playsinline poster="images/poster-short2.jpg"><source src="videos/short-2-changing-the-game.mp4" type="video/mp4"></video><div class="m"><b>Changing the game</b><span>Vertical short · 0:23</span></div></div>
     </div>
   </div>
 </section>
@@ -380,7 +407,7 @@
     <div class="maker reveal">
       <div class="badge" aria-hidden="true">BW</div>
       <div>
-        <span class="eyebrow" id="maker-h">The founder</span>
+        <h2 class="eyebrow" id="maker-h">The founder</h2>
         <blockquote><p>"He didn't commission this from a lab. He built the thing he needed, because he is exactly the user it's for. That's the credibility no sighted engineering team can buy: the person who feels every missing detail is the person designing it."</p></blockquote>
         <p class="who">DJ Breezy Wonder — Founder, Visionary Software LLC. Blind producer, mix &amp; mastering engineer, drummer, live-sound engineer and DJ, with credits alongside Blind Fury and DrummaBoy — and the creator who will demo it live.</p>
       </div>
@@ -398,9 +425,29 @@
     </div>
 
     <div class="raisecard reveal">
-      <div class="raisehead">
-        <span class="big" data-count="50000" data-prefix="$">$50,000</span>
-        <span class="lab">12-month pre-seed · solo founder, full-time · for Visionary Software&nbsp;LLC</span>
+      <div class="racemeter reveal">
+        <div class="race-top">
+          <span class="race-goal">Race to <b>$50,000</b> · 12-month pre-seed for Visionary Software&nbsp;LLC</span>
+          <span class="race-count" data-count="50000" data-prefix="$">$0</span>
+        </div>
+        <div class="race-track" role="img" aria-label="Allocation of the $50,000 raise: Founder runway 44 percent, Ship 1.0 18 percent, Hardware and rig 14 percent, QA and onboarding 8 percent, Company and IP 7 percent, Launch 6 percent, Contingency 3 percent.">
+          <span class="seg" style="--w:44%;background:#3FE6F5;transition-delay:0s"></span>
+          <span class="seg" style="--w:18%;background:#4FC8FA;transition-delay:.1s"></span>
+          <span class="seg" style="--w:14%;background:#6AA8FF;transition-delay:.2s"></span>
+          <span class="seg" style="--w:8%;background:#8A8DFB;transition-delay:.3s"></span>
+          <span class="seg" style="--w:7%;background:#A87BFA;transition-delay:.4s"></span>
+          <span class="seg" style="--w:6%;background:#B067F9;transition-delay:.5s"></span>
+          <span class="seg" style="--w:3%;background:#FFB020;transition-delay:.6s"></span>
+        </div>
+        <div class="race-legend" aria-hidden="true">
+          <span class="li"><i style="background:#3FE6F5"></i>Founder runway <b>44%</b></span>
+          <span class="li"><i style="background:#4FC8FA"></i>Ship 1.0 <b>18%</b></span>
+          <span class="li"><i style="background:#6AA8FF"></i>Hardware &amp; rig <b>14%</b></span>
+          <span class="li"><i style="background:#8A8DFB"></i>QA &amp; onboarding <b>8%</b></span>
+          <span class="li"><i style="background:#A87BFA"></i>Company &amp; IP <b>7%</b></span>
+          <span class="li"><i style="background:#B067F9"></i>Launch <b>6%</b></span>
+          <span class="li"><i style="background:#FFB020"></i>Contingency <b>3%</b></span>
+        </div>
       </div>
       <div class="uof">
         <div class="row"><div class="name">Founder runway<small>12 months building full-time — nothing drawn elsewhere</small></div><div class="track"><div class="fill" data-w="100"></div></div><div class="amt"><b>$22,000</b><span>44%</span></div></div>
@@ -484,8 +531,8 @@
   function fillBars(scope){
     (scope||document).querySelectorAll('.uof .fill').forEach(function(f){ f.style.width = (f.getAttribute('data-w')||0) + '%'; });
   }
-  function runCounters(){
-    document.querySelectorAll('[data-count]').forEach(function(el){
+  function runCounters(scope){
+    (scope||document).querySelectorAll('[data-count]').forEach(function(el){
       if(el.__done) return; el.__done = true;
       var end = +el.getAttribute('data-count'),
           pre = el.getAttribute('data-prefix')||el.getAttribute('data-pre2')||'',
@@ -508,8 +555,8 @@
     },{threshold:.14});
     els.forEach(function(el){ io.observe(el); });
     // counters when hero/stat blocks enter
-    var cio = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ runCounters(); cio.disconnect(); }}); },{threshold:.2});
-    document.querySelectorAll('.hero-stats,.statgrid,.raisehead').forEach(function(n){ cio.observe(n); });
+    var cio = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ runCounters(e.target); cio.unobserve(e.target); }}); },{threshold:.2});
+    document.querySelectorAll('.hero-stats,.statgrid,.racemeter').forEach(function(n){ cio.observe(n); });
   } else {
     els.forEach(function(el){ el.classList.add('in'); }); fillBars(); runCounters();
   }
@@ -543,3 +590,6 @@
   else { var loop=function(t){ draw(t); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
 })();
 </script>
+
+</body>
+</html>
