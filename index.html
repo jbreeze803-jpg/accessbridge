@@ -102,6 +102,26 @@
   .card .ic{width:46px; height:46px; border-radius:13px; background:var(--grad-soft); display:grid; place-items:center; margin-bottom:16px; border:1px solid var(--line-2)}
   .card .ic svg{width:24px; height:24px}
   .card h3{font-size:20px} .card p{margin-top:10px; color:var(--muted); font-size:15px}
+  .card{transform-style:preserve-3d; will-change:transform}
+
+  /* generic disclosures (how it works, delivers, doors) */
+  .disc-btn{display:block; width:100%; text-align:left; background:none; border:none; color:inherit; font:inherit; padding:0; cursor:pointer}
+  .disc-btn h3{display:flex; align-items:center; gap:8px}
+  .disc-chev{margin-left:auto; color:var(--muted); font-size:13px; transition:transform .25s, color .2s; flex:none}
+  .open .disc-chev{transform:rotate(90deg); color:var(--cyan)}
+  .disc-teaser{display:block; margin-top:10px; color:var(--muted); font-size:14.5px}
+  .disc-panel{margin-top:12px; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:14.5px; line-height:1.55; animation:uofin .28s ease}
+  .card.open, .door.open, .f.open{border-color:var(--line-2)}
+  .disc-btn:focus-visible{outline:2px solid var(--gold); outline-offset:6px; border-radius:10px}
+  .door .disc-btn .t{margin-right:4px}
+  .f .disc-btn b{display:flex; align-items:center; gap:8px} .f .disc-teaser{margin-top:8px}
+
+  /* "be part of it" band */
+  .joinband{text-align:center; padding:clamp(70px,11vh,124px) 0; position:relative; overflow:hidden}
+  .joinband::before{content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(60% 100% at 50% 0%,rgba(176,103,249,.16),transparent 62%),radial-gradient(55% 100% at 50% 100%,rgba(63,230,245,.12),transparent 62%)}
+  .joinband h2{font-size:clamp(30px,5.4vw,56px); font-weight:900; letter-spacing:-.02em; max-width:19ch; margin:14px auto 0}
+  .joinband .lede{max-width:60ch; margin:18px auto 0}
+  @media (prefers-reduced-motion:reduce){.disc-panel{animation:none}.disc-chev{transition:none}}
 
   /* the model — playbook steps */
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; counter-reset:s}
@@ -330,26 +350,47 @@
     </div>
 
     <div class="three">
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3FE6F5" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>Reads from the inside</h3>
-        <p>It reads Serato's live internal state directly — decks, time, key, BPM, cues, effects, crates — read-only, no screen capture, no fake clicks. Nothing guessed.</p>
+      <div class="card disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="hw1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#3FE6F5" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h3>Reads from the inside <span class="disc-chev" aria-hidden="true">▸</span></h3>
+          <span class="disc-teaser">Serato's live state, read-only — no screen capture, nothing guessed.</span>
+        </button>
+        <div class="disc-panel" id="hw1" hidden>The track on each deck, the time left, key, BPM, cue points, effects, the crates — pulled straight from Serato's real objects, read-only, with no fake clicks. djay it reads through the Mac's own accessibility system. And if it can't read something, it says so — it never invents a value.</div>
       </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6AA8FF" stroke-width="2" stroke-linecap="round"><rect x="3" y="8" width="18" height="11" rx="2"/><circle cx="8" cy="13.5" r="1.6"/><circle cx="16" cy="13.5" r="1.6"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg></div>
-        <h3>Names the hardware</h3>
-        <p>Every knob, pad and fader announces itself the instant you touch it — zero setup, in both hosts. That knowledge ships built in.</p>
+      <div class="card disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="hw2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#6AA8FF" stroke-width="2" stroke-linecap="round"><rect x="3" y="8" width="18" height="11" rx="2"/><circle cx="8" cy="13.5" r="1.6"/><circle cx="16" cy="13.5" r="1.6"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg></span>
+          <h3>Names the hardware <span class="disc-chev" aria-hidden="true">▸</span></h3>
+          <span class="disc-teaser">Every knob, pad and fader — named the instant you touch it, zero setup.</span>
+        </button>
+        <div class="disc-panel" id="hw2" hidden>A blind DJ could never map a controller by sight, so AccessBridge ships that knowledge built in — 200-plus controllers, named the same way in both Serato and djay, with nothing to configure, nothing to learn, and nothing stored on disk.</div>
       </div>
-      <div class="card reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B067F9" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></div>
-        <h3>Speaks, and drives</h3>
-        <p>One clean voice through the screen reader the DJ trusts — and it drives back: load a track, set a cue, search the library, jump a beat.</p>
+      <div class="card disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="hw3">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B067F9" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+          <h3>Speaks, and drives <span class="disc-chev" aria-hidden="true">▸</span></h3>
+          <span class="disc-teaser">One clean voice you already trust — and it drives back.</span>
+        </button>
+        <div class="disc-panel" id="hw3" hidden>It talks in a single voice at your own rate, through the screen reader you already trust — then does the work too: load a track, set a cue, sort and search the library, jump a beat, all from the keyboard or the controller.</div>
       </div>
     </div>
 
     <div class="doors">
-      <div class="door inside reveal"><h3><span class="t">Serato</span> Read from the inside</h3><p>Only 2 of 124 elements reach a screen reader and there's no official way in — so a small component rides safely inside Serato and reads its real, live objects. Read-only. No screen capture. No synthetic clicks.</p></div>
-      <div class="door access reveal"><h3><span class="t">djay Pro</span> Read the honest way</h3><p>djay is already accessible — so AccessBridge doesn't re-read what it says well. It does the one thing djay can't: name the controller under the DJ's hands.</p></div>
+      <div class="door inside disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="door1">
+          <h3><span class="t">Serato</span> Read from the inside <span class="disc-chev" aria-hidden="true">▸</span></h3>
+          <span class="disc-teaser">Only 2 of 124 elements reach a screen reader — and there's no official way in.</span>
+        </button>
+        <div class="disc-panel" id="door1" hidden>So a small component rides safely inside Serato and reads its real, live objects directly — read-only, no screen capture, no synthetic clicks. That's the hard part, and it's what makes deck state, cues, effects, the crate tree and track loading readable at all.</div>
+      </div>
+      <div class="door access disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="door2">
+          <h3><span class="t">djay Pro</span> Read the honest way <span class="disc-chev" aria-hidden="true">▸</span></h3>
+          <span class="disc-teaser">djay is already accessible — so AccessBridge doesn't re-read what it says well.</span>
+        </button>
+        <div class="disc-panel" id="door2" hidden>It publishes its decks, times and library to the Mac's accessibility system already. So AccessBridge does the one thing djay can't do for itself: name the controller under the DJ's hands — live, with zero setup.</div>
+      </div>
     </div>
 
     <div class="feats reveal" style="margin-top:34px">
@@ -540,10 +581,34 @@
       <h2 style="font-size:clamp(20px,2.6vw,26px)">What $50,000 delivers in twelve months</h2>
     </div>
     <div class="fund">
-      <div class="f reveal"><b>AccessBridge 1.0, shipped</b><span>macOS + Windows, in paying hands.</span></div>
-      <div class="f reveal"><b>Every controller covered</b><span>MIDI + HID / Pro-DJ-Link — any rig, any booth.</span></div>
-      <div class="f reveal"><b>First revenue on</b><span>Direct licenses + live vendor pilot talks.</span></div>
-      <div class="f reveal"><b>A company, formed</b><span>The launchpad for product #2.</span></div>
+      <div class="f disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="d1">
+          <b>AccessBridge 1.0, shipped <span class="disc-chev" aria-hidden="true">▸</span></b>
+          <span class="disc-teaser">macOS + Windows, in paying hands.</span>
+        </button>
+        <div class="disc-panel" id="d1" hidden>The flagship open on both platforms, code-signed and notarized, with the license server live so a download turns into a paying customer.</div>
+      </div>
+      <div class="f disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="d2">
+          <b>Every controller covered <span class="disc-chev" aria-hidden="true">▸</span></b>
+          <span class="disc-teaser">MIDI + HID / Pro-DJ-Link — any rig, any booth.</span>
+        </button>
+        <div class="disc-panel" id="d2" hidden>Beyond MIDI to the HID and Pro-DJ-Link CDJ and XDJ media players in club booths — so "zero setup" holds on any rig a blind DJ walks up to.</div>
+      </div>
+      <div class="f disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="d3">
+          <b>First revenue on <span class="disc-chev" aria-hidden="true">▸</span></b>
+          <span class="disc-teaser">Direct licenses + live vendor pilot talks.</span>
+        </button>
+        <div class="disc-panel" id="d3" hidden>Direct licenses to the blind DJ community, plus live paid-pilot conversations with Serato and Algoriddim — proof the model earns.</div>
+      </div>
+      <div class="f disc reveal">
+        <button class="disc-btn" type="button" aria-expanded="false" aria-controls="d4">
+          <b>A company, formed <span class="disc-chev" aria-hidden="true">▸</span></b>
+          <span class="disc-teaser">The launchpad for product #2.</span>
+        </button>
+        <div class="disc-panel" id="d4" hidden>The LLC, the trademark, and a proven playbook — ready to run the same move on the next locked door. Product #2 starts here.</div>
+      </div>
     </div>
 
     <div class="sec-head reveal" style="margin-top:44px;margin-bottom:4px">
@@ -560,6 +625,19 @@
       <span class="lbl">Take it with you</span>
       <a class="btn btn-ghost" href="documents/AccessBridge-Investor-Deck.pdf">Pitch deck (PDF)</a>
       <a class="btn btn-ghost" href="documents/AccessBridge-Executive-Onepager.pdf">Executive one-pager (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- BE PART OF IT -->
+<section class="joinband" aria-labelledby="join-h">
+  <div class="wrap">
+    <span class="eyebrow">Be part of it</span>
+    <h2 id="join-h">This is bigger than one app. <span class="grad-text">Come build the rest.</span></h2>
+    <p class="lede">There's a whole generation of DJs waiting on the booth to open — and AccessBridge is only the first door. Back the raise, join the movement, and put your name on the way in.</p>
+    <div class="close-cta" style="margin-top:30px">
+      <a class="btn btn-primary" href="#raise">See the raise</a>
+      <a class="btn btn-ghost" href="mailto:breezywonderofficial@gmail.com?subject=Visionary%20Software%20—%20I%20want%20in">I want in →</a>
     </div>
   </div>
 </section>
@@ -637,21 +715,25 @@
     els.forEach(function(el){ el.classList.add('in'); }); fillBars(); runCounters();
   }
 
-  // pointer spotlight on glass cards
+  // pointer spotlight + subtle 3D tilt on glass cards
   if(!reduce && matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.card').forEach(function(c){
       c.addEventListener('mousemove', function(e){ var r=c.getBoundingClientRect();
-        c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+        var px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px');
+        c.style.transform='perspective(820px) rotateY('+((px-.5)*6).toFixed(2)+'deg) rotateX('+((.5-py)*6).toFixed(2)+'deg) translateY(-5px)';
+      });
+      c.addEventListener('mouseleave', function(){ c.style.transform=''; });
     });
   }
 
-  // use-of-funds disclosures — tap to reveal what each line funds; no scroll jump, focus stays put
-  document.querySelectorAll('.uof-item > button.row').forEach(function(btn){
+  // disclosures everywhere — tap to reveal; no scroll jump, focus stays put
+  document.querySelectorAll('button[aria-controls]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var item = btn.parentElement, panel = document.getElementById(btn.getAttribute('aria-controls'));
+      var wrap = btn.parentElement, panel = document.getElementById(btn.getAttribute('aria-controls'));
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
-      item.classList.toggle('open', !open);
+      wrap.classList.toggle('open', !open);
       if(panel) panel.hidden = open;
     });
   });
