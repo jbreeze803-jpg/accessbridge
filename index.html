@@ -150,8 +150,25 @@
   .alloc .r .pct{font-family:var(--mono); font-size:13px; color:var(--muted-2); text-align:right; min-width:44px}
   .alloc .r .cv{justify-self:end; color:var(--muted-2); font-size:11px; transition:transform .22s,color .2s}
   .alloc-item.open .cv{transform:rotate(90deg); color:var(--gold)}
-  .r-exp{color:var(--muted); font-size:14.5px; line-height:1.55; padding:12px 0 16px 30px; border-bottom:1px solid var(--line); animation:fadein .26s ease}
+  .r-exp{color:var(--muted); font-size:14.5px; line-height:1.55; padding:12px 0 18px 30px; border-bottom:1px solid var(--line); animation:fadein .26s ease}
+  .r-exp .sum{display:block}
+  .r-exp ul{list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:7px}
+  .r-exp ul li{display:flex; gap:10px; color:var(--muted); font-size:13.5px; line-height:1.5}
+  .r-exp ul li::before{content:"—"; color:var(--gold); flex:none}
+  .r-exp ul li b{color:var(--text); font-weight:600}
   @keyframes fadein{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  /* already-invested / skin in the game */
+  .invested{border:1px solid var(--gold); border-radius:3px; padding:clamp(24px,3.6vw,36px); margin:0 0 42px; background:linear-gradient(180deg,rgba(217,182,117,.06),transparent)}
+  .invested .eyebrow{color:var(--gold)}
+  .invested h3{font-family:var(--serif); font-weight:500; font-size:clamp(22px,3.1vw,32px); margin:12px 0 0; letter-spacing:-.01em}
+  .invested p{color:var(--muted); margin-top:14px; max-width:66ch; font-size:16px}
+  .invested p b{color:var(--text); font-weight:600}
+  .invested .igrid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:26px; border-top:1px solid var(--line)}
+  .invested .g{padding:18px 16px 6px; border-right:1px solid var(--line)}
+  .invested .g:last-child{border-right:0}
+  .invested .g b{display:block; font-family:var(--mono); font-weight:500; font-size:clamp(19px,2.5vw,26px); color:var(--gold-2); letter-spacing:-.01em}
+  .invested .g span{display:block; color:var(--muted); font-size:12.5px; margin-top:6px; line-height:1.45}
+  @media (max-width:680px){.invested .igrid{grid-template-columns:1fr 1fr}.invested .g{border-bottom:1px solid var(--line)}.invested .g:nth-child(2){border-right:0}}
   .alloc .r.tot{border-bottom:0; padding-top:18px}
   .alloc .r.tot .nm{font-family:var(--serif); font-size:17px; font-weight:500}
   .alloc .r.tot .amt{color:var(--gold-2)}
@@ -293,6 +310,9 @@
       <div class="row"><span class="n">03</span><div><h3>Own the niche</h3><p>Become the default access layer, championed by the community’s own people, with a path to the platform vendors themselves.</p></div></div>
       <div class="row"><span class="n">04</span><div><h3>Repeat</h3><p>The same playbook on the next locked door. AccessBridge is product one — not the last.</p></div></div>
     </div>
+    <div class="pquote up" style="margin-top:46px">
+      <p>Two point two billion people live with a vision impairment — locked out of the software the world runs on. This is not charity; it is access, dignity, and a livelihood. AccessBridge is the first door, and Visionary Software exists to open the rest.</p>
+    </div>
   </div>
 </section>
 
@@ -338,7 +358,7 @@
     </div>
     <div class="up" style="margin-top:32px">
       <div class="vlead"><video controls preload="none" playsinline poster="images/poster-how.jpg"><source src="videos/accessbridge-how-it-works.mp4" type="video/mp4"></video></div>
-      <div class="vcap"><b>AccessBridge — the film</b><span>Serato, the wall, and the way in · 1:51</span></div>
+      <div class="vcap"><b>AccessBridge — the film</b><span>Serato, the wall, and the way in · 1:56</span></div>
     </div>
     <div class="vgrid up">
       <div>
@@ -382,6 +402,18 @@
       <p class="lead" style="margin-top:22px; max-width:64ch">All I own today is a 2021 MacBook Pro M1 and a dream. This raise takes Visionary Software from one shipped product to a company that opens locked doors for a living — one flagship at a time.</p>
     </div>
 
+    <div class="invested up">
+      <span class="eyebrow">Already on the line</span>
+      <h3>I’m not asking you to bet on an idea — the proof is already built.</h3>
+      <p>Before asking for a cent, I built AccessBridge alone: <b>months of full-time work, unpaid</b>, on my own 2021 MacBook Pro M1, with test hardware bought out of pocket and <b>zero outside funding</b>. It is working software, in testers’ hands today. The $50,000 is not seed money for a pitch — it is fuel for a fire that is already lit.</p>
+      <div class="igrid">
+        <div class="g"><b>Months</b><span>full-time and unpaid — my own runway, already spent</span></div>
+        <div class="g"><b>~30,000</b><span>lines of Swift &amp; C++, already shipped</span></div>
+        <div class="g"><b>470+</b><span>automated tests — every claim already proven</span></div>
+        <div class="g"><b>$0</b><span>outside funding to date — self-funded, on real hardware</span></div>
+      </div>
+    </div>
+
     <div class="up">
       <div class="stack" aria-hidden="true">
         <i style="width:44%;background:#EAD199"></i><i style="width:18%;background:#D9B675"></i><i style="width:14%;background:#C6A25E"></i><i style="width:8%;background:#B08C4E"></i><i style="width:7%;background:#6AA8FF"></i><i style="width:6%;background:#8A8DFB"></i><i style="width:3%;background:#B067F9"></i>
@@ -389,31 +421,31 @@
       <div class="alloc">
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a1"><span class="sw" style="background:#EAD199"></span><span class="nm">Founder runway<small>12 months building full-time</small></span><span class="amt">$22,000</span><span class="pct">44%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a1" hidden>A living stipend so I can build full-time for twelve months — the biggest lever in the whole raise.</div>
+          <div class="r-exp" id="a1" hidden><span class="sum">A below-market living stipend so I can build full-time for twelve months — the single highest-value input in the whole raise.</span><ul><li><b>~$1,800 / month</b> for twelve months — rent, utilities, food, and health basics.</li><li>Lets me forgo other income and keep 100% focus on shipping 1.0.</li><li>Runway, not comfort — no salary padding.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a2"><span class="sw" style="background:#D9B675"></span><span class="nm">Ship AccessBridge 1.0<small>Windows, controllers, signing &amp; license server</small></span><span class="amt">$9,000</span><span class="pct">18%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a2" hidden>The Windows port, HID and Pro-DJ-Link controllers, Apple notarization, and the license server that turns a download into a paying customer.</div>
+          <div class="r-exp" id="a2" hidden><span class="sum">Everything it takes to finish and ship version 1.0 on both platforms.</span><ul><li><b>Apple Developer</b> membership + notarization, and a <b>Windows code-signing certificate</b>.</li><li>Finishing the <b>Windows port</b> — the last two on-device discovery steps.</li><li>The <b>HID / Pro-DJ-Link input layer</b> so club CDJ and XDJ players get named too.</li><li><b>License-server</b> hosting + domain — turning a download into a paying customer.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a3"><span class="sw" style="background:#C6A25E"></span><span class="nm">Hardware &amp; test rig<small>Controllers, CDJ/XDJ, Windows machine, audio I/O</small></span><span class="amt">$7,000</span><span class="pct">14%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a3" hidden>Real gear to prove every feature — DJ controllers, Pioneer CDJ and XDJ players, a Windows test machine, and audio interfaces.</div>
+          <div class="r-exp" id="a3" hidden><span class="sum">Real gear to prove every feature on real equipment — a blind DJ can’t trust a feature that only works in a demo.</span><ul><li>A spread of <b>DJ controllers</b> — Pioneer/AlphaTheta, Denon, Numark, Rane, Hercules.</li><li>Access to <b>CDJ / XDJ</b> media players for the Pro-DJ-Link work.</li><li>A real <b>Windows test machine</b> (retiring the current VM).</li><li>Audio interfaces, a controller hub, and cabling.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a4"><span class="sw" style="background:#B08C4E"></span><span class="nm">Accessibility QA &amp; onboarding<small>Blind-first docs, a beta with working DJs</small></span><span class="amt">$4,000</span><span class="pct">8%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a4" hidden>Blind-first documentation, a first run that needs zero sighted help, and a paid beta with working blind DJs.</div>
+          <div class="r-exp" id="a4" hidden><span class="sum">Making the first run need zero sighted help — validated by the people it’s for.</span><ul><li>A <b>paid beta</b> with working blind DJs — stipends for real testing.</li><li><b>Blind-first documentation</b> and audio tutorials.</li><li>A zero-sighted-help <b>onboarding flow</b> — download to first set.</li><li>A <b>WCAG 2.2 audit</b> of the companion interface.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a5"><span class="sw" style="background:#6AA8FF"></span><span class="nm">Company formation, legal &amp; IP<small>LLC, trademark, accounting &amp; banking</small></span><span class="amt">$3,500</span><span class="pct">7%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a5" hidden>Forming the LLC, registering the AccessBridge trademark, and setting up accounting and banking — the legal foundation.</div>
+          <div class="r-exp" id="a5" hidden><span class="sum">The legal foundation a real company stands on.</span><ul><li><b>LLC</b> formation + registered agent.</li><li>The <b>AccessBridge / Visionary Software trademark</b> filing.</li><li><b>Accounting</b> and business banking.</li><li><b>License and pilot agreements</b> drafted with counsel.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a6"><span class="sw" style="background:#8A8DFB"></span><span class="nm">Launch, marketing &amp; community<small>Into every aspiring blind DJ’s hands</small></span><span class="amt">$3,000</span><span class="pct">6%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a6" hidden>Content, community, and the launch push to reach every aspiring blind DJ.</div>
+          <div class="r-exp" id="a6" hidden><span class="sum">Getting it into every aspiring blind DJ’s hands.</span><ul><li>Hosting, domain, and the promo already built.</li><li>A modest ad budget into <b>blind-DJ communities</b>.</li><li>A <b>demo / conference</b> presence.</li><li>Content and community management.</li></ul></div>
         </div>
         <div class="alloc-item">
           <button class="r" type="button" aria-expanded="false" aria-controls="a7"><span class="sw" style="background:#B067F9"></span><span class="nm">Contingency<small>The walls a real build always hits</small></span><span class="amt">$1,500</span><span class="pct">3%</span><span class="cv" aria-hidden="true">▸</span></button>
-          <div class="r-exp" id="a7" hidden>A buffer for the walls a real build always hits — a controller that behaves differently, a platform change, an unexpected cost. Honest budgets carry one.</div>
+          <div class="r-exp" id="a7" hidden><span class="sum">A reserve for the walls a real build always hits — honest budgets carry a buffer.</span><ul><li>A controller that behaves differently than its published spec.</li><li>An OS or platform change that breaks something mid-build.</li><li>An unexpected certificate, hosting, or hardware cost.</li></ul></div>
         </div>
         <div class="r tot"><span></span><span class="nm">Total</span><span class="amt">$50,000</span><span class="pct">100%</span></div>
       </div>
